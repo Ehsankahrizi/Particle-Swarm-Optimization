@@ -1,0 +1,116 @@
+================================================================================
+PARTICLE SWARM OPTIMIZATION HOMEWORK NOTEBOOK - SUMMARY
+================================================================================
+
+FILE LOCATION:
+  /sessions/zen-busy-maxwell/mnt/HW5/code/PSO_Homework.ipynb
+
+FILE SIZE: 19 KB (valid JSON notebook format)
+
+NOTEBOOK STRUCTURE:
+  Total Cells: 21
+    - Markdown cells: 11 (explanations and documentation)
+    - Code cells: 10 (executable Python code)
+
+SECTIONS:
+  1. Title & Introduction
+  2. Imports and Setup (NumPy, Matplotlib, Pandas, Seaborn)
+  3. Objective Functions (Eggholder 2D & Schwefel 4D)
+  4. PSO Class Implementation (full algorithm with all variants)
+  5. Experiment Configuration (10 variants definition)
+  6. Eggholder Function Experiments (50 runs: 10 variants × 5 seeds)
+  7. Eggholder Results Summary (table with statistics)
+  8. Schwefel Function Experiments (50 runs: 10 variants × 5 seeds)
+  9. Schwefel Results Summary (table with statistics)
+  10. Convergence Analysis (convergence plots for all variants)
+  11. Final Summary (cross-function comparison)
+
+IMPLEMENTATION DETAILS:
+
+PSO Algorithm Features:
+  - Support for Star and Ring topologies
+  - Support for Full, Cognition, Social, and Selfless models
+  - Inertia weight (linear decay: 0.9 → 0.4)
+  - Constriction factor (K = 2/|2 - φ - √(φ² - 4φ)|)
+  - Velocity clamping: |v_d| ≤ 512
+  - Boundary handling: clamping + velocity reset
+
+Experimental Configuration:
+  Variants:
+    1. Full model, Star, Base (φ₁=φ₂=2, no inertia/constriction)
+    2. Cognition only (φ₂=0, no inertia/constriction)
+    3. Social only (φ₁=0, no inertia/constriction)
+    4. Selfless (φ₁=0, no inertia/constriction)
+    5. Ring topology, Full model (φ₁=φ₂=2, no inertia/constriction)
+    6. Inertia enabled (φ₁=φ₂=2)
+    7. Constriction enabled (φ₁=φ₂=2.05)
+    8. Inertia+Constriction (φ₁=φ₂=2.05)
+    9a. More particles: 60 (Eggholder), 100 (Schwefel)
+    9b. Fewer particles: 15 (Eggholder), 25 (Schwefel)
+
+  Seeds: [1, 2, 3, 4, 5] (same for both functions)
+  
+  Total Experiments:
+    - Eggholder: 10 × 5 = 50 runs
+    - Schwefel: 10 × 5 = 50 runs
+    - Overall: 100 runs
+
+Problem Specifications:
+  
+  Eggholder Function:
+    - Dimension: 2D
+    - Domain: [-512, 512]²
+    - Global minimum: f(512, 404.2319) = -959.6407
+    - Type: Multimodal
+    - Default particles: 30
+    
+  Schwefel Function:
+    - Dimension: 4D
+    - Domain: [-512, 512]⁴
+    - Global minimum: f(420.97, ..., 420.97) = 0.0
+    - Type: Deceptive
+    - Default particles: 50
+
+Algorithm Parameters:
+  - Max iterations: 500
+  - Initial velocity range: [-5, 5]
+  - Velocity max: 512
+  - Inertia schedule: w = 0.9 - 0.5 * t/T
+  - Random seeds control reproducibility
+
+OUTPUT GENERATION:
+  The notebook produces:
+    - Results summary tables (Mean, Std, Best, Worst for each variant)
+    - Convergence plots showing fitness improvement over iterations
+    - Boxplots comparing variant performance
+    - Performance statistics and analysis
+
+DEPENDENCIES:
+  - NumPy (numerical computing)
+  - Matplotlib (plotting)
+  - Pandas (data frames)
+  - Seaborn (statistical visualization)
+  - Python 3.8+
+
+EXECUTION:
+  jupyter notebook /sessions/zen-busy-maxwell/mnt/HW5/code/PSO_Homework.ipynb
+  
+  Or open in any Jupyter-compatible environment and run all cells.
+  Expected runtime: 5-15 minutes for all 100 experiments.
+
+KEY FEATURES:
+  ✓ Complete PSO implementation with multiple variants
+  ✓ Support for all specified topologies and models
+  ✓ Proper boundary handling with velocity reset
+  ✓ Inertia weight and constriction factor support
+  ✓ Reproducible experiments with seed control
+  ✓ Comprehensive results analysis and visualization
+  ✓ Same seeds for both functions (bonus requirement)
+  ✓ Well-documented with markdown explanations
+  ✓ Valid Jupyter notebook format (JSON)
+
+SUPPORTING FILES:
+  - README_PSO.md: Comprehensive documentation
+  - PSO_Results/: Directory for saving analysis plots
+
+================================================================================
